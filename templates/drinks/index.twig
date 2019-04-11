@@ -1,0 +1,7 @@
+{% extends '_layouts/_main.twig' %}
+{% block main %}
+    {% include '_components/_nav-list' with {
+        heading: 'Drinks Index',
+        links: craft.entries.section('drinks').all
+    } %}
+{% endblock %}

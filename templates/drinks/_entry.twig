@@ -1,0 +1,14 @@
+{% extends '_layouts/_main.twig' %}
+{% block main %}
+    <div class="text-center">
+        <h1>{{ entry.title }}</h1>
+    </div>
+    {% include '_components/_nav-horz' with { links: entry.drinkType } %}
+    {% if entry.drinkRecipe.exists %}
+        <div class="text-center">
+            <a class="btn btn-primary" href='{{ entry.drinkRecipe.one.url }}'>Related Recipe</a>
+        </div>
+    {% endif %}
+    <img src='{{ entry.drinkImage.one.url }}' alt=''>
+    {{ entry.pageCopy }}
+{% endblock %}

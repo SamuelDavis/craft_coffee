@@ -1,0 +1,16 @@
+{% import '_includes/forms' as forms %}
+
+{{ forms.lightswitchField({
+    label: 'User Guide Enabled',
+    name: 'userGuideEnabled',
+    on: settings.userGuideEnabled,
+}) }}
+
+{{ forms.textArea({
+    first: true,
+    label: 'MarkdownText',
+    instructions: 'The content for the user guide.',
+    name: 'markdownText',
+    value: settings.markdownText,
+    rows: 15
+}) }}

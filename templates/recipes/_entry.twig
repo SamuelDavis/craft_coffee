@@ -1,0 +1,49 @@
+{% extends '_layouts/_main.twig' %}
+{% block main %}
+    <h1>{{ entry.title }}</h1>
+    {% for block in entry.recipeContent.all %}
+        {% if block.type == 'ingredientlist' %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Item</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in block.ingredientList %}
+                    <tr>
+                        <td>{{ row.amount }}</td>
+                        <td>{{ row.name }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        {% if block.type == 'tip' %}
+            <div class="alert alert-info">{{ block.tip }}</div>
+        {% endif %}
+        {% if block.type == 'copy' %}
+            {{ block.copyContent }}
+        {% endif %}
+        {% if block.type == 'image' %}
+            <div class="card-deck">
+                {% for asset in block.asset.all %}
+                    <div class="card">
+                        <img src="{{ asset.url }}" class="card-img-top">
+                    </div>
+                {% endfor %}
+            </div>
+            <div>
+                <small>{{ block.caption }}</small>
+            </div>
+        {% endif %}
+        {% if block.type == 'steps' %}
+            <ol class="list-group">
+                {% for item in block.items %}
+                    <li class="list-group-item">{{ item.description }}</li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

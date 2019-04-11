@@ -1,0 +1,8 @@
+{% if heading is defined %}
+    <h1>{{ heading }}</h1>
+{% endif %}
+<div class="list-group">
+    {% for link in links %}
+        <a href="{{ link.url }}" class="list-group-item list-group-item-action">{{ link.title }}</a>
+    {% endfor %}
+</div>

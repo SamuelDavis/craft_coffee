@@ -1,0 +1,16 @@
+{% extends '_layouts/_main.twig' %}
+{% block main %}
+    {% set searchQuery = craft.app.request.getParam('q') %}
+    {% set entries = craft.entries()
+        .search(searchQuery)
+        .orderBy('score')
+        .all() %}
+
+    {% if entries|length %}
+        <p>{{ entries|length }} results:</p>
+        {% include '_components/_nav-list' with { links: entries } %}
+    {% else %}
+        <p>Your search for “{{ searchQuery }}” didn’t return any results.</p>
+        {% include 'search/_form' %}
+    {% endif %}
+{% endblock %}

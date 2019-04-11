@@ -1,0 +1,20 @@
+{% extends '_layouts/cp' %}
+
+{% set title = 'User Guide' %}
+
+{% set tabs = {
+    intro: {label: 'Intro', url: '#intro'},
+    fields: {label: 'Fields', url: '#fields'},
+} %}
+
+{% block content %}
+    <div id="intro">
+        {% set markdownText = craft.app.plugins.getPlugin('user-guide').settings.markdownText %}
+        {{ markdownText|markdown }}
+        <p><em>SETTINGS</em></p>
+    </div>
+
+    <div id="fields" class="hidden">
+        <h1>Fields go here.</h1>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% set id = random(1000000000, 9999999999) %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {% if brand %}
+        <a class="navbar-brand" href="{{ brand.url }}">{{ brand.title }}</a>
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#__{{ id }}"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="__{{ id }}">
+        {% include '_components/_nav-horz' with {classes: 'navbar-nav'} %}
+        <span class="mr-auto"></span>
+        {% include 'search/_form' %}
+    </div>
+</nav>

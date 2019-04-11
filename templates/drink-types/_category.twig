@@ -1,0 +1,8 @@
+{% extends '_layouts/_main.twig' %}
+{% block main %}
+    {% include '_components/_nav-list' with {
+        heading: 'Related Drinks',
+        links: craft.entries.section('drinks').relatedTo(category).all
+    } %}
+{% endblock %}
+
